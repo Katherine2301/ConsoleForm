@@ -24,7 +24,7 @@ namespace ConsoleForm
                 Width = 800;
                 StartPosition = FormStartPosition.CenterScreen;
 
-                Button exitButton = CreateButton(new Size(60, 30), new Point(700, 500), "Выход");
+                Button exitButton = CreateButton(new Size(60, 30), new Point(800, 500), "Выход");
                 exitButton.Click += (sender, e) => Application.Exit();
                 Label label = CreateLabel(new Size(200, 30), new Point(300, 200), "Вы дважды щёлкнули на кнопку");
                 label.Visible = false;
@@ -63,6 +63,18 @@ namespace ConsoleForm
            
            
            
+        }
+    }
+    
+    public class TestClass
+    {
+        public int Id { get; private set; }
+        public string Name { get; set; }
+
+        public TestClass(int id, string name)
+        {
+            Id = id;
+            Name = name;
         }
     }
 }
