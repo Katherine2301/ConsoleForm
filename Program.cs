@@ -24,15 +24,20 @@ namespace ConsoleForm
                 Width = 800;
                 StartPosition = FormStartPosition.CenterScreen;
 
-                Button exitButton = CreateButton(new Size(60, 30), new Point(700, 500), "Выход");
+                Button exitButton = CreateButton(new Size(60, 30), new Point(800, 500), "Выход");
                 exitButton.Click += (sender, e) => Application.Exit();
-               
+                Label label = CreateLabel(new Size(200, 30), new Point(300, 200), "Вы дважды щёлкнули на кнопку");
+                label.Visible = false;
+                DoubleClick += (sender, e) => ShowLabel(label);
                 MouseEnter += (sender, e) => _mouseOnForm = true;
                 MouseLeave += (IChannelSender, e) => _mouseOnForm = false;
               
             }
 
-            
+            private void ShowLabel(Label label)
+            {
+                if (_mouseOnForm) label.Visible = true;
+            }
 
             private void SetCommonParameters(Control element, Size size, Point position, string title)
             {
@@ -49,10 +54,27 @@ namespace ConsoleForm
                 return button;
             }
 
-            
+            private Label CreateLabel(Size size, Point position, string title)
+            {
+                Label label = new Label();
+                SetCommonParameters(label, size, position, title);
+                return label;
+            }
            
            
            
+        }
+    }
+    
+    public class TestClass
+    {
+        public int Id { get; private set; }
+        public string Name { get; set; }
+
+        public TestClass(int id, string name)
+        {
+            Id = id;
+            Name = name;
         }
     }
 }
